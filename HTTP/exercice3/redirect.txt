@@ -1,0 +1,4 @@
+Au début de la requête
+
+Status : 302
+=> Redirection
