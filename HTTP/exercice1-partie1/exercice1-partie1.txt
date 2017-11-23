@@ -1,0 +1,25 @@
+Response Headers
+cache-control:private, must-revalidate => c'est un en tête standard pour définir le cache des contenus dans les requêtes et réponses
+content-length:161 => indique la taille en octets (exprimée en base 10) du corps de la réponse envoyée au client.
+content-type:text/html => serveur web qui indique le ('MIME type') (type de donnée) que la ressource retourne parfois il indique d'encodage des caractère contenu
+date:Thu, 23 Nov 2017 13:12:35 GMT
+last-modified:Thu, 23 Nov 2017 13:12:07 GMT
+server:PhpStorm 2017.2.4 : il indique le serveur web dans ce champ
+X-Content-Type-Options:nosniff => est un marqueur utilisé par le serveur pour indiquer que les types MIME annoncés dans les en-têtes Content-Type ne doivent pas être modifiés et doivent être respectés
+X-Frame-Options:SameOrigin => permet de spécifier si oui ou non un navigateur dispose des autorisations pour charger une page dans un  <frame>, <iframe> ou <object>
+x-xss-protection:1; mode=block =>  est une fonctionnalité d'Internet Explorer, de Chrome et de Safari qui empêche le chargement des pages lorsqu'elles détectent des attaques XSS (Cross-Site Scripting)
+
+
+Request Headers
+view source
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 => Le paramètre d'entête de requête HTTP Accept indique quels sont les types de contenu, exprimés sous la forme de types MIME
+Accept-Encoding:gzip, deflate, br => permet de définir quel sera l'encodage du contenu
+Accept-Language:fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7 => indique quelles sont les langues que le client est capable de comprendre, et quelle variante locale est préférée
+Cache-Control:max-age=0 => est un en-tête standard utilisé pour définir la politique de cache des contenus
+Connection:keep-alive => En-tête général contrôle si la connexion réseau reste ouverte après la fin de la transaction en cours
+Cookie:Phpstorm-e86d370a=1df50062-7781-4d2f-bc96-4b760e7ab723 => contient les cookies HTTP stockés précédemment envoyés par le serveur avec l'en-tête Set-Cookie.
+Host:localhost:63342 => spécifie le nom de domaine du serveur (pour de l'hébergement virtuel), et (optionnellement) le numéro du port TCP sur lequel le serveur écoute.
+If-Modified-Since:Thu, 23 Nov 2017 13:11:50 GMT
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36 :
+=> contient une chaîne caractéristique qui permet aux homologues du protocole réseau d'identifier le type d'application, le système d'exploitation, le fournisseur du logiciel ou la version logicielle de l'agent utilisateur du logiciel demandeur.
