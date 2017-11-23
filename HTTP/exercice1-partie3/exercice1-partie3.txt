@@ -1,0 +1,3 @@
+a/ On constate dans l'onglet réseau que le chargement des images se fait plus lentement.
+b/ On charge d'abord 6 images et dès lors qu'une image est fini il commence une suivante.
+c/ Augmenter le débit
