@@ -1,0 +1,123 @@
+# Created by https://www.gitignore.io/api/symfony,phpstorm,composer
+
+### Composer ###
+composer.phar
+HTTP/exercice4/vendor/
+
+# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+
+### PhpStorm ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff:
+HTTP/.idea/**/workspace.xml
+HTTP/.idea/**/tasks.xml
+HTTP/.idea/dictionaries
+
+# Sensitive or high-churn files:
+HTTP/.idea/**/dataSources/
+HTTP/.idea/**/dataSources.ids
+HTTP/.idea/**/dataSources.xml
+HTTP/.idea/**/dataSources.local.xml
+HTTP/.idea/**/sqlDataSources.xml
+HTTP/.idea/**/dynamic.xml
+HTTP/.idea/**/uiDesigner.xml
+
+# Gradle:
+HTTP/.idea/**/gradle.xml
+HTTP/.idea/**/libraries
+
+# CMake
+HTTP/cmake-build-debug/
+
+# Mongo Explorer plugin:
+HTTP/.idea/**/mongoSettings.xml
+
+## File-based project format:
+HTTP/*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+HTTP/out/
+
+# mpeltonen/sbt-idea plugin
+HTTP/.idea_modules/
+
+# JIRA plugin
+HTTP/atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+HTTP/.idea/replstate.xml
+
+# Ruby plugin and RubyMine
+HTTP/.rakeTasks
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+HTTP/com_crashlytics_export_strings.xml
+HTTP/crashlytics.properties
+HTTP/crashlytics-build.properties
+HTTP/fabric.properties
+
+### PhpStorm Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+
+# *.iml
+# modules.xml
+# .idea/misc.xml
+# *.ipr
+
+# Sonarlint plugin
+HTTP/.idea/sonarlint
+
+### Symfony ###
+# Cache and logs (Symfony2)
+HTTP/app/cache/*
+HTTP/app/logs/*
+HTTP/!app/cache/.gitkeep
+HTTP/!app/logs/.gitkeep
+
+# Email spool folder
+HTTP/app/spool/*
+
+# Cache, session files and logs (Symfony3)
+HTTP/var/cache/*
+HTTP/var/logs/*
+HTTP/var/sessions/*
+HTTP/!var/cache/.gitkeep
+HTTP/!var/logs/.gitkeep
+HTTP/!var/sessions/.gitkeep
+
+# Parameters
+HTTP/app/config/parameters.yml
+HTTP/app/config/parameters.ini
+
+# Managed by Composer
+HTTP/app/bootstrap.php.cache
+HTTP/var/bootstrap.php.cache
+HTTP/bin/*
+HTTP/!bin/console
+HTTP/!bin/symfony_requirements
+
+# Assets and user uploads
+HTTP/web/bundles/
+HTTP/web/uploads/
+
+# PHPUnit
+HTTP/app/phpunit.xml
+HTTP/phpunit.xml
+
+# Build data
+HTTP/build/
+
+# Backup entities generated with doctrine:generate:entities command
+**/Entity/*~
+
+### Symfony Patch ###
+HTTP/web/css/
+HTTP/web/js/
+
+# End of https://www.gitignore.io/api/symfony,phpstorm,composer
