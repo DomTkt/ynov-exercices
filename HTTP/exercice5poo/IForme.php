@@ -8,5 +8,7 @@
 
 interface IForme
 {
+    public function getArea();
+    public function getPerimeter();
 
 }

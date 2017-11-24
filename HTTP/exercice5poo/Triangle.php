@@ -6,7 +6,9 @@
  * Time: 13:45
  */
 
-class Triangle
+require('IForme.php');
+
+class Triangle implements IForme
 {
     private $c1;
     private $c2;
@@ -137,9 +139,22 @@ class Triangle
   }
 
   public function isScalene(){
-      if($this->c1 != $this->c2 && $this->c1 != $this->c3){
+      if(($this->c1 != $this->c2 && $this->c1 != $this->c3)|| ($this->c2 != $this->c1 && $this->c2 != $this->c3) || ($this->c3 != $this->c1 && $this->c3 != $this->c2)){
+
         return true;
+      }else{
+          return "je ne suis pas scalene";
       }
     }
 
+    public function getArea()
+    {
+
+
+    }
+
+    public function getPerimeter()
+    {
+
+    }
 }
