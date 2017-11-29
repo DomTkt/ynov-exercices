@@ -13,7 +13,9 @@ require_once('ResultForm.php');
 require_once('IForme.php');
 require_once('Calculatrice.php');
 require_once('TaxeInclusCalculette.php');
-
+//A changer quelque problème d'import
+require_once('C:\Users\Dom\PhpstormProjects\ynov-exercices\HTTP\exercice1-partie1\vendor\autoload.php');
+use Ynov\Ecole;
 
 $triangle1 = new Triangle(5,5,10);
 $triangle2 = new Triangle(5,5,5);
@@ -73,6 +75,10 @@ echo '<br>';
 echo $taxe->taxeResteDeDivision(10, 20);
 echo '<br>';
 echo $taxe->modulo(10, 12);
+
+$ecole = new Ecole();
+echo $ecole->listeCours();
+
 
 
 
