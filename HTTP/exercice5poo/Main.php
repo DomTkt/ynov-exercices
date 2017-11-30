@@ -14,7 +14,7 @@ require_once('IForme.php');
 require_once('Calculatrice.php');
 require_once('TaxeInclusCalculette.php');
 //A changer quelque problème d'import
-require_once('C:\Users\Dom\PhpstormProjects\ynov-exercices\HTTP\exercice1-partie1\vendor\autoload.php');
+require_once('vendor/autoload.php');
 use Ynov\Ecole;
 
 $triangle1 = new Triangle(5,5,10);

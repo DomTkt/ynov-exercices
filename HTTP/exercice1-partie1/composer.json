@@ -2,11 +2,5 @@
     "require": {
         "monolog/monolog": "^1.23",
         "eventviva/php-image-resize": "^1.6"
-    },
-
-    "autoload": {
-        "psr-4": {
-            "Ynov\\" : "\HTTP\exercice5poo\src"
-        }
     }
 }
