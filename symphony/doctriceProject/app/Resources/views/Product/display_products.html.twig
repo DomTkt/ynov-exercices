@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block title %}AppBundle:Product:displayProducts{% endblock %}
+
+{% block body %}
+    {% for productAl in productAll %}
+        <li>{{ productAl.name }}</li>
+    {% endfor %}
+
+
+{% endblock %}
