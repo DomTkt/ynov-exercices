@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for lesson in lessons %}
+        <ul class="list-group">
+            <li class="list-group-item-primary">{{ lesson }}</li>
+        </ul>
+
+        {% endfor %}
+
+{% endblock %}

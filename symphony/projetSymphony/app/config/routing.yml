@@ -1,3 +1,16 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+cours:
+  path: /lessons/{page}
+  defaults: {_controller: 'AppBundle:Default:listeCours', page:1}
+
+detailsCours:
+  path: /lessonsDetails/{id}
+  defaults: {_controller: 'AppBundle:Default:detailsCours'}
+
+aPropos:
+  path: /aPropos/{langue}
+  defaults: {_controller: 'AppBundle:Default:aPropos'}
+

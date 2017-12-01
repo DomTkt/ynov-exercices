@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for lesson in lessonsDetails %}
+        <li>{{ lesson }}</li>
+    {% endfor %}
+
+{% endblock %}
