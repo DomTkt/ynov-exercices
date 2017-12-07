@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Category;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -31,6 +32,12 @@ class Product
 
     /**
      * @var string
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
@@ -39,14 +46,22 @@ class Product
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = 20,
+     *      minMessage = "20 characters mini"
+     * )
+     * @Assert\Regex(
+     *     pattern="/arnaque|escroquerie/",
+     *     match=false,
+     *     message="mot illegal"
+     * )
      * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
      * @var string
-     *
+
      * @ORM\Column(name="image_url", type="string", length=255)
      */
     private $imageUrl;
@@ -185,6 +200,15 @@ class Product
     public function __toString()
     {
         return $this->name;
+    }
+
+/**
+ * @Assert\IsTrue(message="Le nom et la description doivent être différents")
+ */
+
+    public function isNameDifferentFromDescription()
+    {
+        return $this->name != $this->description;
     }
 }
 
