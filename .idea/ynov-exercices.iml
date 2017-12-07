@@ -5,26 +5,12 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="PHARS">
-        <CLASSES>
-          <root url="phar://$MODULE_DIR$/HTTP/exercice4/composer.phar/" />
-          <root url="phar://$MODULE_DIR$/symphony/projetSymphony/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
-          <root url="phar://$MODULE_DIR$/symphony/projetSymphony/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
-        </CLASSES>
-        <SOURCES>
-          <root url="phar://$MODULE_DIR$/HTTP/exercice4/composer.phar/" />
-          <root url="phar://$MODULE_DIR$/symphony/projetSymphony/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
-          <root url="phar://$MODULE_DIR$/symphony/projetSymphony/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
-          <root url="file://$USER_HOME$/Desktop" />
+          <root url="file://$APPLICATION_HOME_DIR$/bin" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$USER_HOME$/Desktop" />
+          <root url="file://$APPLICATION_HOME_DIR$/bin" />
         </SOURCES>
       </library>
     </orderEntry>
