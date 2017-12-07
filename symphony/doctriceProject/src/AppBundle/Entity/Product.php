@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Category;
 
 /**
  * Product
@@ -168,7 +169,7 @@ class Product
     /**
      * @return Category
      */
-    public function getCategory(): Category
+    public function getCategory()
     {
         return $this->category;
     }
@@ -179,6 +180,11 @@ class Product
     public function setCategory(Category $category)
     {
         $this->category = $category;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }
 

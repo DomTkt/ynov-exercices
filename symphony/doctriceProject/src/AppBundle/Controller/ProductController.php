@@ -2,109 +2,135 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Product;
-use AppBundle\Entity\Category;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Product controller.
+ *
+ * @Route("product")
+ */
 class ProductController extends Controller
 {
     /**
-     * @Route("/createProduct")
-     * @Method("POST")
+     * Lists all product entities.
+     *
+     * @Route("/", name="product_index")
+     * @Method("GET")
      */
-    public function createProductAction()
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $category = new Category();
-        $category->setName('Computer Peripherals');
 
+        $products = $em->getRepository('AppBundle:Product')->findAll();
+
+        return $this->render('product/index.html.twig', array(
+            'products' => $products,
+        ));
+    }
+
+    /**
+     * Creates a new product entity.
+     *
+     * @Route("/new", name="product_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction(Request $request)
+    {
         $product = new Product();
-        $product->setName('Mouse2');
-        $product->setPrice(10.99);
-        $product->setDescription('Ergonomic and stylish!');
-        $product->setImageUrl("image.fr");
-        $product->setCategory($category);
+        $form = $this->createForm('AppBundle\Form\ProductType', $product);
+        $form->handleRequest($request);
 
-        // tells Doctrine you want to (eventually) save the Product (no queries yet)
-        $em->persist($category);
-        $em->persist($product);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
 
-
-        // actually executes the queries (i.e. the INSERT query)
-        $em->flush();
-
-        return $this->redirectToRoute("displayProducts");
-    }
-
-    /**
-     * @Route("/displayProducts", name="displayProducts")
-     */
-    public function displayProductsAction()
-    {
-        $productAll = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->findAll();
-
-        return $this->render('/Product/display_products.html.twig',array('productAll' => $productAll));
-
-
-    }
-
-    /**
-     * @Route("/displayDetailProducts/{productId}")
-     */
-    public function displayDetailProductsAction($productId)
-    {
-        $product = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->find($productId);
-
-        if (!$product) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$productId
-            );
+            return $this->redirectToRoute('product_show', array('id' => $product->getId()));
         }
 
-        return $this->render('/Product/display_detail_products.html.twig',['product'=> $product]);
-
+        return $this->render('product/new.html.twig', array(
+            'product' => $product,
+            'form' => $form->createView(),
+        ));
     }
 
     /**
-     * @Route("/updateProduct/{productId}")
+     * Finds and displays a product entity.
+     *
+     * @Route("/{id}", name="product_show")
+     * @Method("GET")
      */
-    public function updateProductAction($productId)
+    public function showAction(Product $product)
     {
-        $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository(Product::class)->find($productId);
+        $deleteForm = $this->createDeleteForm($product);
 
-        if (!$product) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$productId
-            );
-        }
-
-        $product->setName('New product name!');
-        $em->flush();
+        return $this->render('product/show.html.twig', array(
+            'product' => $product,
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
-     * @Route("/deleteProduct/{productId}")
+     * Displays a form to edit an existing product entity.
+     *
+     * @Route("/{id}/edit", name="product_edit")
+     * @Method({"GET", "POST"})
      */
-    public function deleteProductAction($productId)
+    public function editAction(Request $request, Product $product)
     {
-        $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository(Product::class)->find($productId);
+        $deleteForm = $this->createDeleteForm($product);
+        $editForm = $this->createForm('AppBundle\Form\ProductType', $product);
+        $editForm->handleRequest($request);
 
-        if (!$product) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$productId
-            );
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
         }
 
-        $em->remove($product);
-        $em->flush();
+        return $this->render('product/edit.html.twig', array(
+            'product' => $product,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
+    /**
+     * Deletes a product entity.
+     *
+     * @Route("/{id}", name="product_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, Product $product)
+    {
+        $form = $this->createDeleteForm($product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($product);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('product_index');
+    }
+
+    /**
+     * Creates a form to delete a product entity.
+     *
+     * @param Product $product The product entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Product $product)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('product_delete', array('id' => $product->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
 }
