@@ -35,6 +35,7 @@ class Product
      */
     private $name;
 
+
     /**
      * @var string
      *
@@ -154,6 +155,30 @@ class Product
     public function getImageUrl()
     {
         return $this->imageUrl;
+    }
+
+    /**
+     * @var Category $category
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+
+    private $category;
+
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
     }
 }
 

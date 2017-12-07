@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Category;
 
 class ProductController extends Controller
 {
@@ -16,22 +17,29 @@ class ProductController extends Controller
     public function createProductAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $category = new Category();
+        $category->setName('Computer Peripherals');
 
         $product = new Product();
-        $product->setName('Mouse');
+        $product->setName('Mouse2');
         $product->setPrice(10.99);
         $product->setDescription('Ergonomic and stylish!');
         $product->setImageUrl("image.fr");
+        $product->setCategory($category);
 
         // tells Doctrine you want to (eventually) save the Product (no queries yet)
+        $em->persist($category);
         $em->persist($product);
+
 
         // actually executes the queries (i.e. the INSERT query)
         $em->flush();
+
+        return $this->redirectToRoute("displayProducts");
     }
 
     /**
-     * @Route("/displayProducts")
+     * @Route("/displayProducts", name="displayProducts")
      */
     public function displayProductsAction()
     {
